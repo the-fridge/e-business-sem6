@@ -5,12 +5,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Textstimmungsmusik</title>
+  <script src="jquery.js"></script>
+  <script>
+    var action = function () {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://api.intellexer.com/analyzeSentiments?apikey=5c8a447f-b3fb-4a1c-9a67-1e05bfc1bf4d&loadSentences=true",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": "[{\"id\": \"snt1\", \"text\": \"I am happy. I am sad. I fucked your mom and it was nice.\"}, {\"id\": \"snt2\", \"text\": \"YourText\"}]"
+      }
 
-<script>
-    var action = function(){
-      console.log("test")
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
     }
-</script>
+  </script>
 
 </head>
 
