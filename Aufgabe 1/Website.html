@@ -17,13 +17,12 @@
           "content-type": "application/json",
         },
         "processData": false,
-        "data": "[{\"id\": \"snt1\", \"text\": \"I am happy. I am sad. I fucked your mom and it was nice.\"}]"
+        "data": "[{\"id\": \"1\", \"text\": \""+ $.trim($("#eingabefeld").val()) +"\"}]"
       }
 
-      /*$.ajax(settings).done(function (response) {
+      $.ajax(settings).done(function (response) {
         console.log(response);
-      });*/
-      console.log($.trim($("#eingabefeld").val()))
+      });
     }
   </script>
 
