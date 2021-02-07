@@ -10,8 +10,8 @@
   <!--<script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>-->
   <script>
     var positiveMoods = ["Ssvu2yncgWU", "RYgKd-6_Fc4", "g6swHZbWtRc"]
-    var negativeMoods = ["ussCHoQtty"]
-    var neutralMoods = ["MzXCyO0DcyU", "snECMjdJD5s", "Fxf_iC7hY8I"]
+    var neutralMoods = ["-27alxEZ2Bo"]
+    var negativeMoods = ["MzXCyO0DcyU", "snECMjdJD5s", "Fxf_iC7hY8I"]
     var sentiment;
     var doAction = function () {
       var settings = {
@@ -29,21 +29,24 @@
       $.ajax(settings).done(function (response) {
         console.log(response);
         sentiment = response["sentiments"][0]["w"]
-        console.log(sentiment)
+        console.log("sentiment: " + sentiment)
         let vid;
-          let i;
+        let i;
         if (sentiment > 0) {
           i = Math.floor(Math.random() * (positiveMoods.length + 1))
           vid = positiveMoods[i]
+          console.log("positive mood")
         } else if (sentiment < 0) {
           i = Math.floor(Math.random() * (negativeMoods.length + 1))
           vid = negativeMoods[i]
+          console.log("negative mood")
         } else {
           i = Math.floor(Math.random() * (neutralMoods.length + 1))
           vid = neutralMoods[i]
+          console.log("neutral mood")
         }
-        console.log(i)
-        player.loadVideoById(vid)
+        console.log("index: " + i)
+        player.loadVideoById(vid, 0)
       });
     }
     var doSoundCloud = function () {
@@ -65,7 +68,7 @@
       player = new YT.Player('player', {
         height: '195',
         width: '320',
-        videoId: "MzXCyO0DcyU",
+        videoId: "-27alxEZ2Bo",
         events: {
           'onReady': onPlayerReady,
           'onStateChange': onPlayerStateChange
@@ -99,7 +102,7 @@
   <table width="100%" border="0">
     <tr>
       <td colspan="3" bgcolor="#b5dcb3">
-        <h1>This is Web Page Main title</h1>
+        <h1> Sentiment analyzer music player</h1>
       </td>
     </tr>
     <tr valign="top">
